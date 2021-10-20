@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/abrown41/.oh-my-zsh/plugins/vi-mode'
+let g:netrw_dirhist_6='/Users/abrown41/.oh-my-zsh/plugins/dircycle'
+let g:netrw_dirhist_5='/Users/abrown41/.oh-my-zsh/cache/completions'
+let g:netrw_dirhist_4='/Users/abrown41/test/rmt-utilities/rmt_utilities'
+let g:netrw_dirhist_3='/Users/abrown41/gaussfield'

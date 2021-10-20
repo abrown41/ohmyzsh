@@ -1,0 +1,65 @@
+
+# program end program
+snippet prog
+	program ${1:name}
+	implicit none
+
+	end program $1
+# module end module
+snippet mod
+	module ${1:name}
+	implicit none
+
+	end module $1
+# if () then else end if 
+snippet if
+	if (${1}) then
+	else
+	end if
+# do end do
+snippet do
+	do ${1}
+	end do
+snippet DO
+	DO ${1}
+	END DO
+# subroutine 
+snippet sub
+	subroutine ${1:env} ()
+
+	end subroutine $1
+snippet SUB
+	SUBROUTINE ${1:env} ()
+
+	END SUBROUTINE $1
+snippet fun
+	function ${1:env} ()
+
+	end function $1
+snippet int
+	integer :: 
+snippet real
+	real ::
+snippet inta
+	integer, dimension(${1:dim}) ::
+snippet reala
+	real, dimension(${1:dim}) ::
+snippet intal
+	integer,allocatable, dimension(${1:dim}) ::
+snippet realal
+	real, allocatable,  dimension(${1:dim}) ::
+snippet open
+	open (unit=${1:n},file='${2:filename}',status='${3:stat}')
+snippet prec
+	module precisn
+	implicit none
+	integer, parameter ::wp=selected_real_kind(14)
+
+	end module precisn
+
+	program ${1:name}
+	use precisn
+	implicit none
+	${2:code}
+
+	end program $1

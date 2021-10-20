@@ -125,7 +125,7 @@ unfunction wrap_clipboard_widgets
 
 # if mode indicator wasn't setup by theme, define default
 if [[ -z "$MODE_INDICATOR" ]]; then
-  MODE_INDICATOR='%B%F{red}<%b<<%f'
+  MODE_INDICATOR='%B%F{red}>%b>>%f'
 fi
 
 function vi_mode_prompt_info() {

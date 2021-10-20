@@ -1,0 +1,46 @@
+5,v
+17,v
+-,v
+37,v
+11,v
+,V
+10,v
+14,v
+source ~/.vim/functions/diffboth.vimnmap `v :call Diffboth() <cr>,V
+DUM2,v
+DUMMY_intens,v
+25381,v
+1,v
+100,v
+0,v
+180000,v
+400,v
+40,v
+20,v
+672,v
+240,v
+true,v
+`,v
+source ~/.vim/functions/d,V
+    wincmd p,V
+e,v
+ ,v
+    echom a:bname    Gvsplit a:bname:%,V
+bname,v
+(,v
+",V
+    let branch_name=a:bname,V
+    echom branch_name    Gvsplit branch_name:%,V
+m,v
+a,v
+n,v
+b,v
+:,v
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,v
+<c-w> l,v
+nmap `gv Gvsplit ,V
+g,v
+alias gb='git branch',V
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just,V
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle,V
+" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just,V
