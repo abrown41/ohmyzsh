@@ -1,0 +1,91 @@
+# common aliases used across all machines. machine specific aliases to be stored
+# in ~/.local_aliases
+
+if [ `uname` != Darwin ] ; then
+   alias ls=' ls --color=auto'
+fi
+
+alias diff='diff --suppress-common-lines -y'
+alias latexmk='latexmk -pdf -pvc'
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias .s='screen -R'
+alias cl=' clear'
+alias exit=' exit'
+alias ll=' ls -lh'
+alias la=' ls -a'
+alias l=' ls */'
+alias x='xmgrace'
+alias xl='xmgrace -log y'
+alias :q!=''
+alias sl='ls'
+alias striplines='sed ":a;N;\$!ba;s/\n/ /g"'
+alias vmi='vim'
+alias zta='for file in *.tar.gz ; do zt $file ; done'
+alias tza='for file in *.tar.gz ; do tz $file ; done'
+alias rml='for file in * ; do if [ -h $file ] ; then rm $file ; fi; done'
+alias vun="vim"
+alias tial="tail"
+alias scp="noglob scp"
+alias tzlist='tar -ztvf'
+alias jpn='jupyter notebook'
+alias makemd='jupyter nbconvert --to=markdown'
+alias makepy='jupyter nbconvert --to=script'
+
+
+# local variables for remote machines 
+export kelh=abrown41@kelvin.qub.ac.uk
+export arch=abrown@login-4c.archer2.ac.uk
+export aigh=abrown@aigis.mp.qub.ac.uk
+
+export SOURCE=$RMT_REPO/source/modules
+export SOURCe=$SOURCE
+export PYTHONPATH=$RMT_REPO/utilities/py_lib
+export LESS=eFRX
+
+alias kel="ssh $kelh"
+alias arc='ssh $arch 2>/dev/null'
+alias aig='ssh -KXY $aigh '
+alias aig10='ssh -Y aigis10'
+alias aig14='ssh -Y aigis14'
+alias aig15='ssh -Y aigis15'
+alias aig16='ssh -Y aigis16'
+alias aig17='ssh -Y aigis17'
+
+
+sz () {
+	du -h -d0 $1
+}
+
+tu() {
+# tidy up rmt job directories
+     rm -f pop*  2>/dev/null
+     rm -f expec* 2>/dev/null
+     rm -f hstat* 2>/dev/null
+     rm -f wmatout 2>/dev/null
+     rm -f timing* 2>/dev/null
+     rm -f log.out* 2>/dev/null
+     rm -f CurrentPosition 2>/dev/null
+     rm -f atomic_structure 2>/dev/null
+     rm -f ground/psi* 2>/dev/null
+     rm -f data/p* 2>/dev/null
+     rm -f state/p* 2>/dev/null
+     rm -f state/r* 2>/dev/null
+     rm -f EField.????* 2>/dev/null
+    }
+
+alias tu="tu 2>/dev/null"
+
+# Git aliases
+
+git_push_new(){
+BRANCH_NAME=$(git branch | grep \* | cut -d ' ' -f2) 
+git push --set-upstream origin $BRANCH_NAME
+}
+
+alias gs='git status -uno'
+alias go='git checkout'
+alias cm='git commit'
+alias gp='git pull'
+alias ga='git add'
+alias gpn='git_push_new'
