@@ -181,6 +181,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 " set filetypes that are sometimes missed
 au BufNewFile,BufRead *.py set ft=python
 au BufNewFile,BufRead *.tex set ft=tex
+au BufNewFile,BufRead *.pf set ft=fortran
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
