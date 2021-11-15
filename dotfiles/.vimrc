@@ -188,7 +188,6 @@ au InsertLeave * let &updatetime=updaterestore
 " ensure <s-tab> is correctly mapped
 exe 'set t_kB=' . nr2char(27) . '[Z'
 
-noremap <leader>xt :vs |te <CR>i
 vmap <tab> > 
 vmap <s-tab> <
 imap <S-Left> <Esc>bi
