@@ -9,14 +9,87 @@
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
+let mapleader = "`"
 
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+let need_to_install_plugins = 0
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    let need_to_install_plugins = 1
+endif
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'vim-scripts/The-NERD-tree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" git indicator in editor
+Plug 'airblade/vim-gitgutter'
+" Tabs
+Plug 'jistr/vim-nerdtree-tabs'
+" neovim language things
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
+call plug#end()
+
+" file browser
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeMinimalUI = 1
+let g:nerdtree_open = 0
+map <leader>nt :call NERDTreeToggle()<CR>
+function NERDTreeToggle()
+    NERDTreeTabsToggle
+    if g:nerdtree_open == 1
+        let g:nerdtree_open = 0
+    else
+        let g:nerdtree_open = 1
+        wincmd p
+    endif
+endfunction
+let NERDTreeShowHidden=1
+" NERDTree setting defaults to work around http://github.com/scrooloose/nerdtree/issues/489
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeGlyphReadOnly = "RO"
+if need_to_install_plugins == 1
+    echo "Installing plugins..."
+    silent! PlugInstall
+    echo "Done!"
+    q
+endif
+
+" wrap toggle
+setlocal nowrap
+noremap <silent> <Leader>r :call ToggleWrap()<CR>
+function ToggleWrap()
+    if &wrap
+        echo "Wrap OFF"
+        setlocal nowrap
+        set virtualedit=all
+        silent! nunmap <buffer> <Up>
+        silent! nunmap <buffer> <Down>
+        silent! nunmap <buffer> <Home>
+        silent! nunmap <buffer> <End>
+        silent! iunmap <buffer> <Up>
+        silent! iunmap <buffer> <Down>
+        silent! iunmap <buffer> <Home>
+        silent! iunmap <buffer> <End>
+    else
+        echo "Wrap ON"
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> <Up>   gk
+        noremap  <buffer> <silent> <Down> gj
+        noremap  <buffer> <silent> <Home> g<Home>
+        noremap  <buffer> <silent> <End>  g<End>
+        inoremap <buffer> <silent> <Up>   <C-o>gk
+        inoremap <buffer> <silent> <Down> <C-o>gj
+        inoremap <buffer> <silent> <Home> <C-o>g<Home>
+        inoremap <buffer> <silent> <End>  <C-o>g<End>
+    endif
+endfunction
 syntax on
 
 " If using a dark background within the editing area and syntax highlighting
@@ -27,14 +100,21 @@ set shiftwidth=4
 set textwidth=79
 set expandtab
 set autoindent
+set smartindent
 set fileformat=unix
+set colorcolumn=120
+set number
+
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
 
 let fortran_do_enddo=1
 let fortran_free_source=1
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-filetype plugin on
+filetype plugin indent on
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -108,8 +188,18 @@ au InsertLeave * let &updatetime=updaterestore
 " ensure <s-tab> is correctly mapped
 exe 'set t_kB=' . nr2char(27) . '[Z'
 
+noremap <leader>xt :vs |te <CR>i
 vmap <tab> > 
 vmap <s-tab> <
+imap <S-Left> <Esc>bi
+nmap <S-Left> b
+imap <S-Right> <Esc><Right>wi
+nmap <S-Right> w
+
+" indent/unindent with tab/shift-tab
+nmap <Tab> >>
+imap <S-Tab> <Esc><<i
+nmap <S-tab> <<
 """""""""""""""""""""""""""""""""""""""""""""
 
 " accelerated scrolling
@@ -173,7 +263,6 @@ map! <kPlus> +
 map! <Esc>OS -
 map! <Esc>OM <CR>
 
-let mapleader = "`"
 
 " use rainbow colouring of nested brackets
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
