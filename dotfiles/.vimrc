@@ -30,6 +30,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 " neovim language things
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+" sneak replacement for easymotion
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " file browser
