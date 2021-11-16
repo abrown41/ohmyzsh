@@ -63,8 +63,8 @@ hi SpellCap      gui=undercurl                                   guisp=#4169E1
 hi SpellRare     gui=undercurl                                   guisp=#2E8B57
 hi SpellLocal    gui=undercurl                                   guisp=#9400D3
 
-hi Pmenu                                          guibg=#FDD7D6
-hi PmenuSel                                       guibg=#C0C0C0
+hi Pmenu                                          guibg=#EBE134
+hi PmenuSel                                       guibg=#EB3434
 hi PmenuSbar                                      guibg=#A9A9A9
 hi PmenuThumb    gui=reverse
 

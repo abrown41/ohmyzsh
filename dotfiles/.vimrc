@@ -32,6 +32,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 " sneak replacement for easymotion
 Plug 'justinmk/vim-sneak'
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " sneak navigation
@@ -284,3 +286,5 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+
