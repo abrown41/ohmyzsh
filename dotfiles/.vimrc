@@ -1,4 +1,4 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
+"" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
 " /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
 " do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
@@ -33,6 +33,9 @@ Plug 'neovim/nvim-lspconfig'
 " sneak replacement for easymotion
 Plug 'justinmk/vim-sneak'
 call plug#end()
+
+" sneak navigation
+let g:sneak#label = 1
 
 " file browser
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
