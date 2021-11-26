@@ -32,12 +32,17 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 " sneak replacement for easymotion
 Plug 'justinmk/vim-sneak'
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" python IDE
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
-" sneak navigation
-let g:sneak#label = 1
+" python linting
+let g:neomake_python_enabled_makers = ['flake8']
+let g:deoplete#enable_at_startup = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+call neomake#configure#automake('nrwi', 500)
 
 " file browser
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -67,7 +72,7 @@ if need_to_install_plugins == 1
 endif
 
 " wrap toggle
-setlocal nowrap
+setlocal wrap
 noremap <silent> <Leader>r :call ToggleWrap()<CR>
 function ToggleWrap()
     if &wrap

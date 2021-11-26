@@ -365,4 +365,4 @@ nmap \la  :! lat %:t <CR><CR>
 nmap ;l :! latex %:t <CR><CR>
 nmap tb :tabe mybib.bib <CR> gt
 map \cm i%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\<CR>
-set textwidth=80
+set textwidth=0
