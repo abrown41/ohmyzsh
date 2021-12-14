@@ -20,6 +20,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'preservim/nerdtree'
 Plug 'vim-scripts/The-NERD-tree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -106,7 +107,7 @@ syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-set background=light
+set background=dark
 set tabstop=4
 set shiftwidth=4
 set textwidth=79
@@ -150,8 +151,8 @@ set expandtab
 set tw=80
 set formatoptions+=t
 
-au Filetype fortran,sh,c,cpp,python,vim,java,make,txt,tex set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-au Filetype fortran,sh,c,cpp,python,vim,java,make,txt,tex colorscheme sonoma " use sonoma colorscheme for these files
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+"colorscheme molokai " use molokai colorscheme for these files
 
 " command aliases for when your attempts at exiting are too speedy!
 """"""""""""""""""""""""""""""""""""""""""
@@ -291,4 +292,16 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" Example config in VimScript
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+" Load the colorscheme
+colorscheme tokyonight
