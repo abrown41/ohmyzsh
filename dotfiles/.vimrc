@@ -20,6 +20,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'preservim/nerdtree'
 Plug 'vim-scripts/The-NERD-tree'
@@ -39,6 +40,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 call plug#end()
 
+" make sneak work like easymotion
+let g:sneak#streak = 1
 " python linting
 let g:neomake_python_enabled_makers = ['flake8']
 let g:deoplete#enable_at_startup = 1
@@ -305,3 +308,12 @@ let g:tokyonight_colors = {
 
 " Load the colorscheme
 colorscheme tokyonight
+
+" tmux navigator settings
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> `<left> :TmuxNavigateLeft<cr>
+nnoremap <silent> `<down> :TmuxNavigateDown<cr>
+nnoremap <silent> `<up> :TmuxNavigateUp<cr>
+nnoremap <silent> `<right> :TmuxNavigateRight<cr>
+nnoremap <silent> `tmn :TmuxNavigatePrevious<cr>

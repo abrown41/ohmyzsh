@@ -91,3 +91,11 @@ alias gp='git pull'
 alias ga='git add'
 alias gpn='git_push_new'
 alias gca='git commit --amend'
+
+dev() {
+   if [ $# -eq 0 ]; then
+      tmux new-session \;  split-window -v \; resize-pane -D 10 \; select-pane -U
+   elif [ $# -eq 1 ]; then
+      tmux new-session \; send-keys 'vim ' $1 C-m \; split-window -v \; resize-pane -D 10 \; select-pane -U
+   fi
+}
