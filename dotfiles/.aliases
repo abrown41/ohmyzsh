@@ -91,6 +91,7 @@ alias gp='git pull'
 alias ga='git add'
 alias gpn='git_push_new'
 alias gca='git commit --amend'
+alias gReset='git reset HEAD --hard'
 
 dev() {
    if [ $# -eq 0 ]; then
