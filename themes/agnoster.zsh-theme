@@ -176,9 +176,12 @@ prompt_dir() {
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue white "(`basename $virtualenv_path`)"
-  fi
+  if [[ -n $virtualenv_path ]] ; then 
+    base=`basename $virtualenv_path`
+    if [[ $base != "anaconda3" ]]; then
+    prompt_segment  yellow $CURRENT_FG "$base"
+    fi
+  fi 
 }
 
 # Status:
@@ -197,9 +200,9 @@ prompt_status() {
 
 ## Main prompt
 build_prompt() {
+  prompt_virtualenv
   prompt_context
   prompt_status
-  prompt_virtualenv
   prompt_dir
   prompt_git
   prompt_hg

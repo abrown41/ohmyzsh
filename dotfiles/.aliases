@@ -37,7 +37,7 @@ alias makepy='jupyter nbconvert --to=script'
 # local variables for remote machines 
 export kelh=3048375@kelvin2.qub.ac.uk
 export arch=abrown@login.archer2.ac.uk
-export aigh=abrown@aigis.mp.qub.ac.uk
+export aigh=abrown@aigis-offcampus 
 
 export SOURCE=$RMT_REPO/source/modules
 export SOURCe=$SOURCE
