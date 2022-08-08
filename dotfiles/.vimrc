@@ -29,23 +29,32 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 " Tabs
 Plug 'jistr/vim-nerdtree-tabs'
-" neovim language things
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 " sneak replacement for easymotion
 Plug 'justinmk/vim-sneak'
 " python IDE
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete = 1
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:python_host_prog='/Users/abrown41/opt/anaconda3/bin/python'
+let g:python3_host_prog='/Users/abrown41/opt/anaconda3/bin/python'
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-zsh'
+Plug 'deoplete-plugins/deoplete-terminal'
+Plug 'Shougo/echodoc'
+let g:echodoc#enable_at_startup = 1
+set cmdheight=2
+let g:echodoc#type = 'echo'
 call plug#end()
 
 " make sneak work like easymotion
 let g:sneak#streak = 1
 " python linting
 let g:neomake_python_enabled_makers = ['flake8']
-let g:deoplete#enable_at_startup = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 call neomake#configure#automake('nrwi', 500)
 
 " file browser

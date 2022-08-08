@@ -35,7 +35,7 @@ alias makepy='jupyter nbconvert --to=script'
 
 
 # local variables for remote machines 
-export kelh=3048375@kelvin2.qub.ac.uk
+export kelh="-p 55890 -i ~/.ssh/my-kelvin-key 3048375@kelvin2.qub.ac.uk"
 export arch=abrown@login.archer2.ac.uk
 export aigh=abrown@aigis-offcampus 
 

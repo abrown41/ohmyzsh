@@ -41,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 typeset -U PATH
-PATH=~/opt/anaconda3/bin:"${PATH}":"${PFDIR}":/opt/local/bin:/Library/TeX/texbin:/usr/local/bin:~/.bin:/Applications/CMake.app/Contents/bin:/opt/local/bin
+PATH="${PATH}":"${PFDIR}":/opt/local/bin:/Library/TeX/texbin:/usr/local/bin:~/.bin:/Applications/CMake.app/Contents/bin:/opt/local/bin:~/opt/anaconda3/bin
 
 # undo tab expansion if you don't like the result with shift-tab
 bindkey "[Z" undo
@@ -57,6 +57,9 @@ setopt autocd
 # export LANG=en_US.UTF-8
 
 export EDITOR='/usr/bin/vim'
+
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 # Give correct functionality too home, end pg up/down keys 
 
@@ -80,8 +83,8 @@ export LSCOLORS=ExfxcxdxCxegedabagacad
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 #
-source ~/.local_aliases
 source $ZSH/dotfiles/.aliases
+source ~/.local_aliases
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -92,7 +95,7 @@ else
     if [ -f "/Users/abrown41/opt/anaconda3/etc/profile.d/conda.sh" ]; then
         . "/Users/abrown41/opt/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/abrown41/opt/anaconda3/bin:$PATH"
+        export PATH="$PATH:/Users/abrown41/opt/anaconda3/bin"
     fi
 fi
 unset __conda_setup
@@ -101,3 +104,6 @@ unset __conda_setup
 # Stop conda setting the venv prompt, and allow zsh to handle it instead
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
