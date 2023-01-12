@@ -56,7 +56,10 @@ setopt autocd
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-export EDITOR='/usr/bin/vim'
+export EDITOR='vim'
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 HISTSIZE=10000000
 SAVEHIST=10000000

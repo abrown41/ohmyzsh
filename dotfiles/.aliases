@@ -38,6 +38,8 @@ alias makepy='jupyter nbconvert --to=script'
 export kelh="-p 55890 -i ~/.ssh/my-kelvin-key 3048375@kelvin2.qub.ac.uk"
 export arch=abrown@login.archer2.ac.uk
 export aigh=abrown@aigis-offcampus 
+export stah=abrown41@stampede2.tacc.utexas.edu
+export exph=abrown41@login.expanse.sdsc.edu
 
 export SOURCE=$RMT_REPO/source/modules
 export SOURCe=$SOURCE
@@ -46,6 +48,8 @@ export LESS=eFRX
 
 alias kel="ssh $kelh"
 alias arc='ssh $arch 2>/dev/null'
+alias sta='ssh $stah'
+alias exp='ssh $exph'
 alias aig='ssh -KXY $aigh '
 alias aig10='ssh -Y aigis10'
 alias aig14='ssh -Y aigis14'
@@ -88,6 +92,7 @@ alias gs='git status -uno'
 alias go='git checkout'
 alias cm='git commit'
 alias gp='git pull'
+alias gpp='git pull && git push'
 alias ga='git add'
 alias gpn='git_push_new'
 alias gca='git commit --amend'
