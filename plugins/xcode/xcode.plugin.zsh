@@ -7,7 +7,7 @@ alias xcsel='sudo xcode-select --switch'
 # source: https://gist.github.com/subdigital/5420709
 function xc {
   local xcode_files
-  xcode_files=(${1:-.}/{*.{xcworkspace,xcodeproj},Package.swift}(N))
+  xcode_files=(${1:-.}/{*.{xcworkspace,xcodeproj,swiftpm},Package.swift}(N))
 
   if [[ ${#xcode_files} -eq 0 ]]; then
     echo "No Xcode files found in ${1:-the current directory}." >&2
@@ -31,7 +31,7 @@ function xx {
   open -a "Xcode.app" "$@"
 }
 
-# "XCode-SELect by Version" - select Xcode by just version number
+# "Xcode-Select by Version" - select Xcode by just version number
 # Uses naming convention:
 #  - different versions of Xcode are named Xcode-<version>.app or stored
 #     in a folder named Xcode-<version>

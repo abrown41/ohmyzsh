@@ -3,6 +3,13 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+# add (uncommented):
+# zstyle ':omz:directories' aliases no
+# to your `zshrc` before loading `oh-my-zsh.sh`
+# to disable the following aliases and functions
+
+zstyle -T ':omz:directories' aliases || return
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -26,7 +33,7 @@ function d () {
   if [[ -n $1 ]]; then
     dirs "$@"
   else
-    dirs -v | head -10
+    dirs -v | head -n 10
   fi
 }
 compdef _dirs d
