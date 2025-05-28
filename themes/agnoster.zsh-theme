@@ -50,12 +50,12 @@ esac
 # Override these settings in your ~/.zshrc
 
 # Current working directory
-: ${AGNOSTER_DIR_FG:=${CURRENT_FG}}
-: ${AGNOSTER_DIR_BG:=blue}
+: ${AGNOSTER_DIR_FG:=blue}
+: ${AGNOSTER_DIR_BG:=white}
 
 # user@host
-: ${AGNOSTER_CONTEXT_FG:=${CURRENT_DEFAULT_FG}}
-: ${AGNOSTER_CONTEXT_BG:=black}
+: ${AGNOSTER_CONTEXT_FG:=white}
+: ${AGNOSTER_CONTEXT_BG:=blue}
 
 # Git related
 : ${AGNOSTER_GIT_CLEAN_FG:=${CURRENT_FG}}
