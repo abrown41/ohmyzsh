@@ -1,0 +1,112 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+ HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+ DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git vi-mode branch docker)
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+typeset -U PATH
+PATH="${PATH}":"${PFDIR}":/Library/TeX/texbin:/opt/local/bin:/usr/local/bin:~/.bin:/Applications/CMake.app/Contents/bin:/opt/local/bin:~/anaconda3/bin
+
+# undo tab expansion if you don't like the result with shift-tab
+bindkey "[Z" undo
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
+
+# be forgiving of forgetting the cd
+setopt autocd
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+export EDITOR='vim'
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+# Give correct functionality too home, end pg up/down keys 
+
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\ee[C" forward-word
+bindkey "\ee[D" backward-word
+bindkey "\^H" backward-delete-word
+
+# set directory/executable colors to bold blue/green
+
+export LSCOLORS=ExfxcxdxCxegedabagacad
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+#
+source $ZSH/dotfiles/.aliases
+source ~/.local_aliases
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/abrown41/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/abrown41/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/abrown41/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$PATH:/Users/abrown41/opt/anaconda3/bin"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+#
+# Stop conda setting the venv prompt, and allow zsh to handle it instead
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
